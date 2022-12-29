@@ -1,17 +1,27 @@
 package com.poshyweb.api.controller;
 
+import com.poshyweb.api.dominio.dto.MedicoDTO;
 import com.poshyweb.api.dominio.entity.MedicoEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.poshyweb.api.service.MedicoService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping(value = "/medico")
 public class MedicoController {
+    @Autowired
+    private MedicoService service;
 
-    @PostMapping(value = "cadastrar")
-    public void cadastrar(@RequestBody MedicoEntity medicoEntity){
-        System.out.println(medicoEntity);
+    @PostMapping(value = "/insert")
+    public MedicoEntity cadastrar(@RequestBody MedicoDTO medicoDTO){
+        return service.saveMedico(medicoDTO);
+    }
+
+    @GetMapping (value = "listAll")
+    public List<MedicoEntity> listAll(){
+        return service.getAll();
     }
 }
