@@ -1,22 +1,26 @@
 package com.poshyweb.api.service;
 
-import com.poshyweb.api.controller.MedicoController;
+import com.poshyweb.api.dominio.dto.MedicoDTO;
+import com.poshyweb.api.dominio.entity.MedicoEntity;
+import com.poshyweb.api.dominio.repository.MedicoRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-import java.util.Objects;
+import java.util.List;
 import java.util.Optional;
 
+@Service
 public class MedicoService {
+    @Autowired
+    private MedicoRepository repository;
 
-    public Optional<MedicoController> getId(Long id){
-        if (Objects.equals(id, id)){
-            return null;// repository.findById(id);
-        }
-        return null;
+    public List<MedicoEntity> getAll() {
+        List<MedicoEntity> medicos = repository.findAll();
+        return medicos;
     }
-    public MedicoController saveMedico(MedicoController medico){
-        if (medico != null){
-            return null;// repository.save(medico);
-        }
-        return null;
+
+    public MedicoEntity saveMedico(MedicoDTO medicoDTO) {
+        MedicoEntity medico = repository.save(new MedicoEntity(medicoDTO));
+        return medico;
     }
 }
