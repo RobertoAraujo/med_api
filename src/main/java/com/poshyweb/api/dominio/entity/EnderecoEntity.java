@@ -14,6 +14,7 @@ import lombok.Setter;
 @AllArgsConstructor
 public class EnderecoEntity {
     private String longradouro;
+    private String bairro;
     private String cep;
     private String cidade;
     private String uf;
@@ -23,6 +24,7 @@ public class EnderecoEntity {
     public EnderecoEntity(EnderecoDTO enderecoDTO) {
         this.longradouro = enderecoDTO.longradouro();
         this.cep = enderecoDTO.cep();
+        this.bairro = enderecoDTO.bairro();
         this.cidade = enderecoDTO.cidade();
         this.uf = enderecoDTO.uf();
         this.numero = enderecoDTO.numero();
