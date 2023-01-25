@@ -1,6 +1,7 @@
 package com.poshyweb.api.controller;
 
 import com.poshyweb.api.dominio.dto.MedicoDTO;
+import com.poshyweb.api.dominio.dto.MedicoListDTO;
 import com.poshyweb.api.dominio.entity.MedicoEntity;
 import com.poshyweb.api.service.MedicoService;
 import jakarta.validation.Valid;
@@ -28,7 +29,13 @@ public class MedicoController {
     }
 
     @GetMapping(value = "listAll")
-    public List<MedicoEntity> listAll() {
-        return service.getAll();
+    public ResponseEntity<List<MedicoListDTO>> listAll() {
+        try{
+            List<MedicoListDTO> listAllMedicos = service.getAll().stream().toList();
+            return ResponseEntity.ok().body(listAllMedicos);
+        }catch (Exception e){
+            return ResponseEntity.notFound().build();
+        }
     }
+
 }

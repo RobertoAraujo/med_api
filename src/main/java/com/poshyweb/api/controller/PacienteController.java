@@ -1,6 +1,7 @@
 package com.poshyweb.api.controller;
 
 import com.poshyweb.api.dominio.dto.PacienteDTO;
+import com.poshyweb.api.dominio.dto.PacienteListDTO;
 import com.poshyweb.api.dominio.entity.PacienteEntity;
 import com.poshyweb.api.service.PacienteService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,8 +22,8 @@ public class PacienteController {
     }
 
     @GetMapping(value = "/listAll")
-    public List<PacienteEntity> listAllPacientes() {
-        List<PacienteEntity> listAllPaciente = service.listAll();
+    public List<PacienteListDTO> listAllPacientes() {
+        List<PacienteListDTO> listAllPaciente = service.listAll().stream().toList();
         return listAllPaciente;
     }
 

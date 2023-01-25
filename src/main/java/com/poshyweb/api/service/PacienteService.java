@@ -1,6 +1,7 @@
 package com.poshyweb.api.service;
 
 import com.poshyweb.api.dominio.dto.PacienteDTO;
+import com.poshyweb.api.dominio.dto.PacienteListDTO;
 import com.poshyweb.api.dominio.entity.PacienteEntity;
 import com.poshyweb.api.dominio.repository.PacienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,8 +19,8 @@ public class PacienteService {
         return savePaciente;
     }
 
-    public List<PacienteEntity> listAll() {
-        List<PacienteEntity> listPacietes = repository.findAll();
-        return listPacietes;
+    public List<PacienteListDTO> listAll() {
+        List<PacienteListDTO> pacienteListDTOS = repository.findAll().stream().map(PacienteListDTO::new).toList();
+        return pacienteListDTOS;
     }
 }
