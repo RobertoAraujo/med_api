@@ -6,8 +6,7 @@ import lombok.*;
 
 @Entity
 @Table(name = "paciente")
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
