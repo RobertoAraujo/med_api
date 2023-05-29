@@ -1,4 +1,4 @@
-package com.poshyweb.api.dominio.dto;
+package com.poshyweb.api.dominio.dto.endereco;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;

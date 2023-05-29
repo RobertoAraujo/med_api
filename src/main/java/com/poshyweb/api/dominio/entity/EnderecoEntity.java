@@ -1,6 +1,6 @@
 package com.poshyweb.api.dominio.entity;
 
-import com.poshyweb.api.dominio.dto.EnderecoDTO;
+import com.poshyweb.api.dominio.dto.endereco.EnderecoDTO;
 import jakarta.persistence.Embeddable;
 import lombok.*;
 

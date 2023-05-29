@@ -1,6 +1,6 @@
-package com.poshyweb.api.dominio.dto;
+package com.poshyweb.api.dominio.dto.medicodto;
 
-import jakarta.validation.constraints.NotBlank;
+import com.poshyweb.api.dominio.dto.endereco.EnderecoDTO;
 import jakarta.validation.constraints.NotNull;
 
 public record MedicoUpdateDTO(

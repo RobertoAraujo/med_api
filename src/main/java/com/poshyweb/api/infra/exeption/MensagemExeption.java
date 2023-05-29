@@ -1,4 +1,4 @@
-package com.poshyweb.api.exeption;
+package com.poshyweb.api.infra.exeption;
 
 public class MensagemExeption extends Exception {
     public MensagemExeption(String nome) {
@@ -6,6 +6,6 @@ public class MensagemExeption extends Exception {
     }
 
     public MensagemExeption(String message, Throwable cause) {
-        super("Não foi possivel cadastrar o medico"+ message +"", cause);
+        super("Não foi possivel cadastrar o medico" + message + " ", cause);
     }
 }

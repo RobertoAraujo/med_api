@@ -1,14 +1,15 @@
 package com.poshyweb.api.dominio.entity;
 
 import com.poshyweb.api.constants.Expecializacao;
-import com.poshyweb.api.dominio.dto.MedicoDTO;
-import com.poshyweb.api.dominio.dto.MedicoUpdateDTO;
+import com.poshyweb.api.dominio.dto.medicodto.MedicoDTO;
+import com.poshyweb.api.dominio.dto.medicodto.MedicoUpdateDTO;
 import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
 @Table(name = "medico")
 @Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
@@ -42,7 +43,9 @@ public class MedicoEntity {
 
         }else if (medicoUpdateDTO.enderecoDTO() != null) {
             this.endereco.updateInformation(medicoUpdateDTO.enderecoDTO());
+
         }
+
         return medicoUpdateDTO;
     }
 }

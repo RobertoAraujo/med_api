@@ -1,4 +1,4 @@
-package com.poshyweb.api.dominio.dto;
+package com.poshyweb.api.dominio.dto.medicodto;
 
 import com.poshyweb.api.constants.Expecializacao;
 import com.poshyweb.api.dominio.entity.MedicoEntity;

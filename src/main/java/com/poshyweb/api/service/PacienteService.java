@@ -1,10 +1,15 @@
 package com.poshyweb.api.service;
 
-import com.poshyweb.api.dominio.dto.PacienteDTO;
-import com.poshyweb.api.dominio.dto.PacienteListDTO;
+import com.poshyweb.api.dominio.dto.pacientedto.PacienteDTO;
+import com.poshyweb.api.dominio.dto.pacientedto.PacienteListDTO;
+import com.poshyweb.api.dominio.dto.pacientedto.PacienteUpdateDTO;
 import com.poshyweb.api.dominio.entity.PacienteEntity;
 import com.poshyweb.api.dominio.repository.PacienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,8 +24,29 @@ public class PacienteService {
         return savePaciente;
     }
 
-    public List<PacienteListDTO> listAll() {
-        List<PacienteListDTO> pacienteListDTOS = repository.findAll().stream().map(PacienteListDTO::new).toList();
-        return pacienteListDTOS;
+    public PacienteUpdateDTO updatePaciente(PacienteUpdateDTO pacienteUpdateDTO) {
+        PacienteEntity paciente = repository.getReferenceById(pacienteUpdateDTO.id());
+        return paciente.updateInformation(pacienteUpdateDTO);
+    }
+
+    public Page<PacienteEntity> search(String nome, int page, int size) {
+        PageRequest pageRequest = PageRequest.of(page, size, Sort.Direction.ASC, "nome");
+        return repository.search(nome.toLowerCase(), pageRequest);
+    }
+
+    public Page<PacienteEntity> findAll() {
+        int page = 0;
+        int size = 5;
+        PageRequest pageRequest = PageRequest.of(page, size, Sort.Direction.ASC, "nome");
+        return new PageImpl<>(repository.findAll(), pageRequest, size);
+    }
+
+    public void delete(Long id) {
+        PacienteEntity paciente = repository.getReferenceById(id);
+        if (paciente.getId() != null) {
+            repository.deleteById(id);
+        } else {
+            System.out.println("Não encontrado!");
+        }
     }
 }

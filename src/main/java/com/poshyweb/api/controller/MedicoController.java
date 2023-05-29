@@ -1,15 +1,14 @@
 package com.poshyweb.api.controller;
 
-import com.poshyweb.api.dominio.dto.MedicoDTO;
-import com.poshyweb.api.dominio.dto.MedicoListDTO;
-import com.poshyweb.api.dominio.dto.MedicoUpdateDTO;
+import com.poshyweb.api.dominio.dto.medicodto.MedicoDTO;
+import com.poshyweb.api.dominio.dto.medicodto.MedicoListDTO;
+import com.poshyweb.api.dominio.dto.medicodto.MedicoUpdateDTO;
 import com.poshyweb.api.dominio.entity.MedicoEntity;
 import com.poshyweb.api.service.MedicoService;
-import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.Pattern;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.query.Param;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,6 +18,8 @@ import java.util.List;
 @RestController
 @RequestMapping(value = "/medico")
 public class MedicoController {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(MedicoController.class.getName());
     @Autowired
     private MedicoService service;
 
@@ -57,5 +58,4 @@ public class MedicoController {
         service.deletMedico(id);
         return ResponseEntity.ok().body("Deletado com sucesso! ");
     }
-
 }

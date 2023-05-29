@@ -1,16 +1,14 @@
 package com.poshyweb.api.service;
 
-import com.poshyweb.api.dominio.dto.MedicoDTO;
-import com.poshyweb.api.dominio.dto.MedicoListDTO;
-import com.poshyweb.api.dominio.dto.MedicoUpdateDTO;
+import com.poshyweb.api.dominio.dto.medicodto.MedicoDTO;
+import com.poshyweb.api.dominio.dto.medicodto.MedicoListDTO;
+import com.poshyweb.api.dominio.dto.medicodto.MedicoUpdateDTO;
 import com.poshyweb.api.dominio.entity.MedicoEntity;
 import com.poshyweb.api.dominio.repository.MedicoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
 import java.util.List;
-import java.util.Objects;
 
 @Service
 public class MedicoService {

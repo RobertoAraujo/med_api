@@ -1,5 +1,6 @@
-package com.poshyweb.api.dominio.dto;
+package com.poshyweb.api.dominio.dto.pacientedto;
 
+import com.poshyweb.api.dominio.dto.endereco.EnderecoDTO;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
